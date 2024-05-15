@@ -1,19 +1,23 @@
 import { Box } from "@mui/material";
-import Questions from "./components/Questions";
+import Questions from "./components/Question";
+import OptionsList from "./components/OptionsList";
+
+const boxStyle = {
+  bgcolor: "customBlue.main",
+  height: "98%",
+  width: "99%",
+  boxSizing: "border-box",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  sx: { transform: "translate(-50%, -50%)" }
+}
 
 const App = () => {
   return (
-    <Box
-      bgcolor={"customBlue.main"}
-      height={"98%"}
-      width={"99%"}
-      boxSizing={"border-box"}
-      position={"absolute"}
-      top={"50%"}
-      left={"50%"}
-      sx={{ transform: "translate(-50%, -50%)" }}
-    >
+    <Box {...boxStyle}>
       <Questions />
+      <OptionsList />
     </Box>
   );
 };
