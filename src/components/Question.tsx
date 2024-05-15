@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-
+import { type OptionProps } from "./Option";
 const boxStyle = {
   bgcolor: "customYellow.main",
   height: 100,
@@ -13,6 +13,11 @@ const boxStyle = {
   fontSize: "24px",
 };
 
+export type QuestionType= {
+  id: string;
+  questionText: string;
+  questionOptions: OptionProps[] 
+}
 const Question = () => {
   return (
     <Box {...boxStyle}>
