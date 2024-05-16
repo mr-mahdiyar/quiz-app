@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
 
-type OptionProps = {
+export type OptionProps = {
   optionText: string;
-  // optionNumber: number;
-  // truthyChecking: () => number;
+  optionNumber: number;
+  // truthyChecking: () => number; this function should seperate extract option number from text and send it for check truthy.
 };
 
 const buttonStyle = {
@@ -16,12 +16,12 @@ const buttonStyle = {
   ":hover": {
     bgcolor: "customYellow.main",
     filter: "brightness(97%)",
-  }
+  },
 };
 
 const Option = ({ optionText = " گزینه اول" }: OptionProps) => {
   return (
-    <Button sx={{...buttonStyle}}>
+    <Button sx={{ ...buttonStyle }}>
       <h4>{optionText}</h4>
     </Button>
   );
