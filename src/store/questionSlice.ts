@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { type QuestionType } from "../components/Question";
-import { addQuestion } from "../services/questionService";
+import { addQuestion, getAllQuestions } from "../services/questionService";
 import { STATUS } from "../utils/status";
 import { type PayloadAction } from "@reduxjs/toolkit";
 type InitialState = {
@@ -23,7 +23,11 @@ export const questionSlice = createSlice({
         state.status = STATUS.FULFILLED;
         state.questions.push(action.payload);
       }
-    );
+    )
+    .addCase(getQuestionsFromServer.fulfilled, (state, action: PayloadAction<QuestionType[]>) => {
+      state.status = STATUS.FULFILLED;
+      state.questions = action.payload;
+    })
   },
 });
 
@@ -35,4 +39,10 @@ export const addQuestionToServer = createAsyncThunk(
   }
 );
 
+export const getQuestionsFromServer = createAsyncThunk("getQuestionsFromServer", async () => {
+  const response = await getAllQuestions();
+  return response.data;
+})
 export default questionSlice;
+
+export const selectAllQuestion = (state) => state.questions.questions
