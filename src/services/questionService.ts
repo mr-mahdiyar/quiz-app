@@ -9,6 +9,6 @@ export const addQuestion = (question: QuestionType) => {
   return axios.post(makeSubUrl(`${questions}`), question);
 };
 
-export const readAllQuestions = () => {
+export const getAllQuestions = () => {
     return axios.get(makeSubUrl(questions))
 }
