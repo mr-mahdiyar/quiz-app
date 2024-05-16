@@ -6,7 +6,7 @@ import { type QuestionType } from "../components/Question";
 const questions = "questions"
 
 export const addQuestion = (question: QuestionType) => {
-  return axios.post(makeSubUrl(`${questions}/${question.id}`));
+  return axios.post(makeSubUrl(`${questions}`), question);
 };
 
 export const readAllQuestions = () => {
