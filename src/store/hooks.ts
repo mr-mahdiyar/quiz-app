@@ -5,5 +5,5 @@ import { type AppDispatch, RootState } from "./store";
 
 type DispatchFunction = () => AppDispatch;
 
-export const useQestionDispatch: DispatchFunction = useDispatch;
+export const useQuestionDispatch: DispatchFunction = useDispatch;
 export const useQuestionSelector:TypedUseSelectorHook<RootState> = useSelector;
