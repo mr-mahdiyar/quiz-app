@@ -7,4 +7,6 @@ export const store = configureStore({
 });
 
 // It should describe how dispatch works or what kind of data invokes with dispatching in application.
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = ReturnType<typeof store.dispatch>;
+
+export type RootState = typeof store.getState;
