@@ -16,7 +16,8 @@ const boxStyle = {
 export type QuestionType= {
   id: string;
   questionText: string;
-  questionOptions: OptionProps[] 
+  questionOptions: OptionProps[],
+  trueOption: number
 }
 const Question = () => {
   return (
