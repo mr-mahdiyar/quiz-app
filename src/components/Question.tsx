@@ -5,7 +5,8 @@ const boxStyle = {
   height: 100,
   width: "80%",
   mx: "auto",
-  my: 20,
+  mt: 17,
+  mb: 10,
   borderRadius: 5,
   display: "flex",
   alignItems: "center",
@@ -19,12 +20,13 @@ export type QuestionType= {
   questionOptions: OptionProps[],
   trueOption: number
 }
-const Question = () => {
+type QuestionProps = {
+  questionText: string
+}
+const Question = ({questionText}: QuestionProps) => {
   return (
     <Box {...boxStyle}>
-      <h4>نویسنده کتاب باشگاه پنج صبحی ها چه کسی است؟</h4>
-      {/* recieve question text */}
-      {/* <h4>{Question.questionText}</h4> */}
+      <h4>{questionText}</h4>
     </Box>
   );
 };
