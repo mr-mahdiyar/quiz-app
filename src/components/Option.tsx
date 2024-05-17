@@ -1,29 +1,65 @@
 import { Button } from "@mui/material";
-
+import { type FC, useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 export type OptionProps = {
   optionText: string;
   optionNumber: number;
-  // truthyChecking: () => number; this function should seperate extract option number from text and send it for check truthy.
+  trueOption: number;
+  onSelectOption: Dispatch<SetStateAction<boolean>>;
+  showOptionsBGStyle: boolean;
 };
 
-const buttonStyle = {
-  width: "100%",
-  color: "black",
-  bgcolor: "customYellow.main",
-  borderRadius: 5,
-  textAlign: "center",
-  fontSize: "22px",
-  ":hover": {
-    bgcolor: "customYellow.main",
-    filter: "brightness(97%)",
-  },
-};
+const Option: FC<OptionProps> = ({
+  optionText,
+  optionNumber,
+  trueOption,
+  showOptionsBGStyle,
+  onSelectOption,
+}: OptionProps) => {
 
-const Option = ({ optionText = " گزینه اول" }: OptionProps) => {
+  const [bgColor, setBgColor] = useState<string>("customYellow.main");
+  const buttonStyle = {
+    width: "100%",
+    color: "black",
+    bgcolor: bgColor,
+    borderRadius: 5,
+    textAlign: "center",
+    fontSize: "24px",
+    height: 100,
+    typography: "h5",
+    ":hover": {
+      bgcolor: bgColor,
+      filter: "brightness(97%)",
+    },
+    '&.Mui-disabled': {
+      color: 'black',
+      opacity: 0.9, 
+    },
+  };
+
+  useEffect(() => {
+    if(showOptionsBGStyle == true){
+      if (optionNumber == trueOption) {
+        setBgColor("#7fff00")
+      }
+      else {
+        setBgColor("#ff0000")
+      }
+    }
+  }, [showOptionsBGStyle])
+
   return (
-    <Button sx={{ ...buttonStyle }}>
-      <h4>{optionText}</h4>
-    </Button>
+    <>
+      {showOptionsBGStyle ? (
+        <Button sx={{ ...buttonStyle }} onClick={() => onSelectOption(true)} disabled>
+          {optionText}
+        </Button>
+      ) : (
+        <Button sx={{ ...buttonStyle }} onClick={() => onSelectOption(true)} >
+          {optionText}
+        </Button>
+      )}
+    </>
   );
 };
 
