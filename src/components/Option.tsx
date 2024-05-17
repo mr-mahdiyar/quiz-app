@@ -43,10 +43,10 @@ const Option: FC<OptionProps> = ({
     }
     else {
       if (optionNumber == trueOption) {
-        setBgColor("#7fff00")
+        setBgColor("customGreen.main")
       }
       else if (selectedOptionNumber == optionNumber){
-        setBgColor("#ff0000")
+        setBgColor("customRed.main")
       }
     }
   }, [selectedOptionNumber])
