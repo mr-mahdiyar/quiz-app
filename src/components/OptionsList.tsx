@@ -6,7 +6,6 @@ import { type FC, Dispatch, SetStateAction, useState, useEffect } from "react";
 const containerStyle = {
   width: "80%",
   mx: "auto",
-  // mt: -10,
   rowSpacing: 10,
   justifyContent: "space-between",
 };

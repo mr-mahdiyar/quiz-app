@@ -5,7 +5,7 @@ const boxStyle = {
   height: 100,
   width: "80%",
   mx: "auto",
-  mt: 17,
+  mt: 10,
   mb: 10,
   borderRadius: 5,
   display: "flex",

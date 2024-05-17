@@ -2,7 +2,7 @@ import Question from "../components/Question";
 import OptionsList from "../components/OptionsList";
 import { type QuestionType } from "../components/Question";
 import { useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import NextQuestion from "../components/NextQuestion";
 
 type QuestionsPageProps = {
   questions: QuestionType[];
@@ -46,21 +46,12 @@ const QuestionsPage = ({ questions }: QuestionsPageProps) => {
           />
         </>
       ) : null}
-      {enableShowNextQuestion ? (
-        <Button
-          onClick={() => {
-            setSelectedOptionNumber(0)
-            setTimeout(() => {
-              setCurrentQuestionNumber((prevNumber) => {
-                return prevNumber + 1;
-              });
-            }, 150)
-            setEnableShowNextQuestion(false);
-          }}
-        >
-          next
-        </Button>
-      ) : null}
+      <NextQuestion
+        enableShowNextQuestion={enableShowNextQuestion}
+        setCurrentQuestionNumber={setCurrentQuestionNumber}
+        setEnableShowNextQuestion={setEnableShowNextQuestion}
+        setSelectedOptionNumber={setSelectedOptionNumber}
+      />
     </>
   );
 };
