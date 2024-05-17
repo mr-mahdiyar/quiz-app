@@ -1,7 +1,7 @@
-import Option from "./Option";
+import Option, { type OptionProps } from "./Option";
 import Grid from "@mui/material/Unstable_Grid2";
 import { type QuestionType } from "./Question";
-import { type FC, Dispatch, SetStateAction, useState } from "react";
+import { type FC, Dispatch, SetStateAction, useState, useEffect } from "react";
 
 const containerStyle = {
   width: "80%",
@@ -26,10 +26,14 @@ const OptionsList: FC<OptionsListProps> = ({
 }: OptionsListProps) => {
 
   const [selectedOptionNumber, setSelectedOptionNumber] = useState<number>(0);
+  const [randomQuestionOptions, setRandomQuestionOptions] = useState<OptionProps[]>([])
 
+  useEffect(() => {
+    setRandomQuestionOptions(() => questionOptions?.toSorted(() => Math.random() - 0.5))
+  }, [questionOptions])
   return (
     <Grid container {...containerStyle}>
-      {questionOptions?.map((option) => (
+      {randomQuestionOptions?.map((option) => (
         <Grid {...itemsStyle} key={option.optionNumber}>
           <Option
             optionText={option.optionText}
