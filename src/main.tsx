@@ -6,11 +6,9 @@ import { myTheme } from "./utils/customThem.ts";
 import { Provider } from "react-redux";
 import { store } from "./store/store.ts";
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={myTheme}>
         <App />
       </ThemeProvider>
     </Provider>
-  </React.StrictMode>
 );
