@@ -22,12 +22,14 @@ type NextQuestionPropsType = {
   setSelectedOptionNumber: Dispatch<SetStateAction<number>>;
   setCurrentQuestionNumber: Dispatch<SetStateAction<number>>;
   setEnableShowNextQuestion: Dispatch<SetStateAction<boolean>>;
+  currentQuestionNumber: number
 };
 const NextQuestion = ({
   enableShowNextQuestion,
   setCurrentQuestionNumber,
   setEnableShowNextQuestion,
   setSelectedOptionNumber,
+  currentQuestionNumber
 }: NextQuestionPropsType) => {
   return (
     <>
@@ -45,7 +47,7 @@ const NextQuestion = ({
               setEnableShowNextQuestion(false);
             }}
           >
-            سوال بعد
+           {currentQuestionNumber < 4 ? "سوال بعد" : "مشاهده امتیاز"}
           </Button>
         </Box>
       ) : null}

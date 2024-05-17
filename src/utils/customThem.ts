@@ -13,6 +13,9 @@ type customPaletteOption = {
   },
   customRed: {
     main: string
+  },
+  customWhite: {
+    main: string
   }
 } & Theme["palette"];
 
@@ -30,6 +33,9 @@ export const myTheme = createTheme({
     },
     customRed: {
       main: "#ff0000"
+    },
+    customWhite: {
+      main: "#EEF7FF"
     }
   } as customPaletteOption,
 });

@@ -3,7 +3,7 @@ import OptionsList from "../components/OptionsList";
 import { type QuestionType } from "../components/Question";
 import { useEffect, useState } from "react";
 import NextQuestion from "../components/NextQuestion";
-
+import ShowScore from "../components/ShowScore";
 type QuestionsPageProps = {
   questions: QuestionType[];
 };
@@ -25,7 +25,8 @@ const QuestionsPage = ({ questions }: QuestionsPageProps) => {
   }, [questions]);
   return (
     <>
-      {randomSortOfQuestions ? (
+    
+      {currentQuestionNumber < 5 ? (
         <>
           <Question
             questionText={
@@ -45,12 +46,13 @@ const QuestionsPage = ({ questions }: QuestionsPageProps) => {
             setEnableShowNextQuestion={setEnableShowNextQuestion}
           />
         </>
-      ) : null}
+      ) : <ShowScore score={score}/>}
       <NextQuestion
         enableShowNextQuestion={enableShowNextQuestion}
         setCurrentQuestionNumber={setCurrentQuestionNumber}
         setEnableShowNextQuestion={setEnableShowNextQuestion}
         setSelectedOptionNumber={setSelectedOptionNumber}
+        currentQuestionNumber={currentQuestionNumber}
       />
     </>
   );
