@@ -15,22 +15,40 @@ const itemsStyle = {
 };
 
 export type OptionsListProps = {
-  onSelectOption: Dispatch<SetStateAction<boolean>>;
-  showOptionsBGStyle: boolean;
+  setScore: Dispatch<SetStateAction<number>>;
+  setEnableShowNextQuestion: Dispatch<SetStateAction<boolean>>;
+  selectedOptionNumber: number;
+  setSelectedOptionNumber: Dispatch<SetStateAction<number>>
 } & Pick<QuestionType, "questionOptions" | "trueOption">;
 
 
 const OptionsList: FC<OptionsListProps> = ({
   questionOptions,
   trueOption,
+  selectedOptionNumber,
+  setSelectedOptionNumber,
+  setScore,
+  setEnableShowNextQuestion
 }: OptionsListProps) => {
 
-  const [selectedOptionNumber, setSelectedOptionNumber] = useState<number>(0);
+  // const [selectedOptionNumber, setSelectedOptionNumber] = useState<number>(0);
   const [randomQuestionOptions, setRandomQuestionOptions] = useState<OptionProps[]>([])
 
   useEffect(() => {
     setRandomQuestionOptions(() => questionOptions?.toSorted(() => Math.random() - 0.5))
   }, [questionOptions])
+
+  useEffect(() => {
+    if(selectedOptionNumber != 0) {
+      if(selectedOptionNumber == trueOption) {
+        setScore(prevScore => {
+          return prevScore + 1
+        })
+      }
+      setEnableShowNextQuestion(true);
+    }
+  }, [selectedOptionNumber])
+
   return (
     <Grid container {...containerStyle}>
       {randomQuestionOptions?.map((option) => (

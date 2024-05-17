@@ -14,7 +14,7 @@ const Option: FC<OptionProps> = ({
   optionNumber,
   trueOption,
   selectedOptionNumber,
-  setSelectedOptionNumber
+  setSelectedOptionNumber,
 }: OptionProps) => {
 
   const [bgColor, setBgColor] = useState<string>("customYellow.main");
@@ -38,7 +38,10 @@ const Option: FC<OptionProps> = ({
   };
 
   useEffect(() => {
-    if(selectedOptionNumber != 0){
+    if(selectedOptionNumber == 0) {
+      setBgColor("customYellow.main")
+    }
+    else {
       if (optionNumber == trueOption) {
         setBgColor("#7fff00")
       }
@@ -49,7 +52,6 @@ const Option: FC<OptionProps> = ({
   }, [selectedOptionNumber])
 
   const selectOptionHandler = () => {
-    // onSelectOption(true);
     setSelectedOptionNumber(optionNumber)
   }
   return (
