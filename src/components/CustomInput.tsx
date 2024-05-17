@@ -1,5 +1,5 @@
 import { FormControl, Input } from "@mui/material";
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent } from "react";
 
 type CustomInputProps = {
   placeHolder: string;
