@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
-import Questions from "./components/Question";
-import OptionsList from "./components/OptionsList";
 import { getQuestionsFromServer, selectAllQuestion } from "./store/questionSlice";
 import { useEffect } from "react";
 import { useQuestionSelector } from "./store/hooks";
 import { useQuestionDispatch } from "./store/hooks";
+import QuestionsPage from "./pages/QuestionsPage";
+
 const boxStyle = {
   bgcolor: "customBlue.main",
   height: "98%",
@@ -27,8 +27,7 @@ const App = () => {
 
   return (
     <Box {...boxStyle}>
-      <Questions />
-      <OptionsList />
+      <QuestionsPage questions={questions}/>
     </Box>
   );
 };
