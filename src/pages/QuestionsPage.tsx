@@ -9,7 +9,6 @@ type QuestionsPageProps = {
 
 const QuestionsPage = ({ questions }: QuestionsPageProps) => {
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState<number>(0);
-  const [showOptionsBGStyle, setShowOptionsBGStyle] = useState<boolean>(false);
   const [randomSortOfQuestions, setRandomSortOfQuestions] = useState<
     QuestionType[]
   >([]);
@@ -35,8 +34,6 @@ const QuestionsPage = ({ questions }: QuestionsPageProps) => {
             trueOption={
               randomSortOfQuestions[currentQuestionNumber]?.trueOption
             }
-            showOptionsBGStyle={showOptionsBGStyle}
-            onSelectOption={setShowOptionsBGStyle}
           />
         </>
       ) : null}
