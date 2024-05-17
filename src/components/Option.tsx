@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { type FC, useEffect, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 export type OptionProps = {
@@ -6,7 +6,7 @@ export type OptionProps = {
   optionNumber: number;
   trueOption: number;
   selectedOptionNumber: number;
-  setSelectedOptionNumber: Dispatch<SetStateAction<number>>
+  setSelectedOptionNumber: Dispatch<SetStateAction<number>>;
 };
 
 const Option: FC<OptionProps> = ({
@@ -16,7 +16,6 @@ const Option: FC<OptionProps> = ({
   selectedOptionNumber,
   setSelectedOptionNumber,
 }: OptionProps) => {
-
   const [bgColor, setBgColor] = useState<string>("customYellow.main");
   const buttonStyle = {
     width: "100%",
@@ -31,38 +30,40 @@ const Option: FC<OptionProps> = ({
       bgcolor: bgColor,
       filter: "brightness(97%)",
     },
-    '&.Mui-disabled': {
-      color: 'black',
-      opacity: 1, 
+    "&.Mui-disabled": {
+      color: "black",
+      opacity: 1,
     },
   };
 
   useEffect(() => {
-    if(selectedOptionNumber == 0) {
-      setBgColor("customYellow.main")
-    }
-    else {
+    if (selectedOptionNumber == 0) {
+      setBgColor("customYellow.main");
+    } else {
       if (optionNumber == trueOption) {
-        setBgColor("customGreen.main")
-      }
-      else if (selectedOptionNumber == optionNumber){
-        setBgColor("customRed.main")
+        setBgColor("customGreen.main");
+      } else if (selectedOptionNumber == optionNumber) {
+        setBgColor("customRed.main");
       }
     }
-  }, [selectedOptionNumber])
+  }, [selectedOptionNumber]);
 
   const selectOptionHandler = () => {
-    setSelectedOptionNumber(optionNumber)
-  }
+    setSelectedOptionNumber(optionNumber);
+  };
   return (
     <>
       {selectedOptionNumber != 0 ? (
         <Button sx={{ ...buttonStyle }} disabled>
-          {optionText}
+          <Typography variant="h5" fontFamily={"Dirooz"}>
+            {optionText}
+          </Typography>
         </Button>
       ) : (
-        <Button sx={{ ...buttonStyle }} onClick={selectOptionHandler } >
-          {optionText}
+        <Button sx={{ ...buttonStyle }} onClick={selectOptionHandler}>
+          <Typography variant="h5" fontFamily={"Dirooz"}>
+            {optionText}
+          </Typography>
         </Button>
       )}
     </>

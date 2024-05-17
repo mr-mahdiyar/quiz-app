@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 const boxStyle = {
     width: "90%",
@@ -47,7 +47,9 @@ const NextQuestion = ({
               setEnableShowNextQuestion(false);
             }}
           >
+            <Typography variant="h5" fontFamily={"Dirooz"}>
            {currentQuestionNumber < 4 ? "سوال بعد" : "مشاهده امتیاز"}
+            </Typography>
           </Button>
         </Box>
       ) : null}

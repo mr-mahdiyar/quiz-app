@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { type OptionProps } from "./Option";
 const boxStyle = {
   bgcolor: "customYellow.main",
@@ -26,7 +26,7 @@ type QuestionProps = {
 const Question = ({questionText}: QuestionProps) => {
   return (
     <Box {...boxStyle}>
-      <h4>{questionText}</h4>
+      <Typography variant="h5" fontFamily={"Dirooz"}>{questionText}</Typography>
     </Box>
   );
 };

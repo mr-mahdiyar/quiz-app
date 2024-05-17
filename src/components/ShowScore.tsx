@@ -23,13 +23,14 @@ const ShowScore = ({score} : ShowScorePropsType) => {
   return (
     <>
     {score > 0 ? (<Box {...boxStyle}>
-      <Typography variant='h4'>
+      <Typography variant='h4' fontFamily={"Dirooz"} textAlign={"center"}>
         شما به {score} سوال جواب درست دادید.
+        <br />
         <br />
         امتیاز شما {score * 20} از 100 می باشد!
       </Typography>
     </Box>) : (<Box {...boxStyle}>
-      <Typography variant='h4' color={"customRed.main"}>
+      <Typography variant='h4' fontFamily={"Dirooz"} textAlign={"center"} color={"customRed.main"}>
         شما همه سوالات را اشتباه جواب دادید! بنابراین امتیازی کسب نکردید!
       </Typography>
     </Box>)}
