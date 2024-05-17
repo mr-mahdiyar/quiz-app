@@ -1,7 +1,7 @@
 import Option from "./Option";
 import Grid from "@mui/material/Unstable_Grid2";
 import { type QuestionType } from "./Question";
-import { type FC, Dispatch, SetStateAction } from "react";
+import { type FC, Dispatch, SetStateAction, useState } from "react";
 
 const containerStyle = {
   width: "80%",
@@ -23,9 +23,10 @@ export type OptionsListProps = {
 const OptionsList: FC<OptionsListProps> = ({
   questionOptions,
   trueOption,
-  onSelectOption,
-  showOptionsBGStyle,
 }: OptionsListProps) => {
+
+  const [selectedOptionNumber, setSelectedOptionNumber] = useState<number>(0);
+
   return (
     <Grid container {...containerStyle}>
       {questionOptions?.map((option) => (
@@ -34,8 +35,8 @@ const OptionsList: FC<OptionsListProps> = ({
             optionText={option.optionText}
             optionNumber={option.optionNumber}
             trueOption={trueOption}
-            onSelectOption={onSelectOption}
-            showOptionsBGStyle={showOptionsBGStyle}
+            selectedOptionNumber={selectedOptionNumber}
+            setSelectedOptionNumber={setSelectedOptionNumber}
           />
         </Grid>
       ))}

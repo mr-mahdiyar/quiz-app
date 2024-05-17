@@ -5,16 +5,16 @@ export type OptionProps = {
   optionText: string;
   optionNumber: number;
   trueOption: number;
-  onSelectOption: Dispatch<SetStateAction<boolean>>;
-  showOptionsBGStyle: boolean;
+  selectedOptionNumber: number;
+  setSelectedOptionNumber: Dispatch<SetStateAction<number>>
 };
 
 const Option: FC<OptionProps> = ({
   optionText,
   optionNumber,
   trueOption,
-  showOptionsBGStyle,
-  onSelectOption,
+  selectedOptionNumber,
+  setSelectedOptionNumber
 }: OptionProps) => {
 
   const [bgColor, setBgColor] = useState<string>("customYellow.main");
@@ -33,29 +33,33 @@ const Option: FC<OptionProps> = ({
     },
     '&.Mui-disabled': {
       color: 'black',
-      opacity: 0.9, 
+      opacity: 1, 
     },
   };
 
   useEffect(() => {
-    if(showOptionsBGStyle == true){
+    if(selectedOptionNumber != 0){
       if (optionNumber == trueOption) {
         setBgColor("#7fff00")
       }
-      else {
+      else if (selectedOptionNumber == optionNumber){
         setBgColor("#ff0000")
       }
     }
-  }, [showOptionsBGStyle])
+  }, [selectedOptionNumber])
 
+  const selectOptionHandler = () => {
+    // onSelectOption(true);
+    setSelectedOptionNumber(optionNumber)
+  }
   return (
     <>
-      {showOptionsBGStyle ? (
-        <Button sx={{ ...buttonStyle }} onClick={() => onSelectOption(true)} disabled>
+      {selectedOptionNumber != 0 ? (
+        <Button sx={{ ...buttonStyle }} disabled>
           {optionText}
         </Button>
       ) : (
-        <Button sx={{ ...buttonStyle }} onClick={() => onSelectOption(true)} >
+        <Button sx={{ ...buttonStyle }} onClick={selectOptionHandler } >
           {optionText}
         </Button>
       )}
