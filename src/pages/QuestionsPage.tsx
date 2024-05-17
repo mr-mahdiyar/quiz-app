@@ -23,11 +23,12 @@ const QuestionsPage = ({ questions }: QuestionsPageProps) => {
       return questions.toSorted(() => Math.random() - 0.5).slice(0, 5);
     });
   }, [questions]);
+
   return (
     <>
-    
       {currentQuestionNumber < 5 ? (
         <>
+        <title>کوییز اپ - سوال {currentQuestionNumber + 1}</title>
           <Question
             questionText={
               randomSortOfQuestions[currentQuestionNumber]?.questionText

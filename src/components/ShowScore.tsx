@@ -22,6 +22,7 @@ type ShowScorePropsType = {
 const ShowScore = ({score} : ShowScorePropsType) => {
   return (
     <>
+    <title>صفحه امتیاز</title>
     {score > 0 ? (<Box {...boxStyle}>
       <Typography variant='h4' fontFamily={"Dirooz"} textAlign={"center"}>
         شما به {score} سوال جواب درست دادید.
